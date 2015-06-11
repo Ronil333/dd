@@ -1,15 +1,11 @@
-#include
-#include
-#include
-#include
-#include
-#include
-<linux/module.h>
-<linux/kernel.h>
-<linux/init.h>
-<linux/proc_fs.h>
-<linux/sched.h>
-<asm/uaccess.h>
+
+
+#include <linux/module.h>
+#include <linux/kernel.h>
+#include <linux/init.h>
+#include <linux/proc_fs.h>
+#include <linux/sched.h>
+#include <asm/uaccess.h>
 #define MODULE_VERSION "1.0"
 #define MODULE_NAME "procfs_example"
 #define FOOBAR_LEN 8
@@ -17,12 +13,9 @@ struct fb_data_t {
 char name[FOOBAR_LEN + 1];
 char value[FOOBAR_LEN + 1];
 };
-static struct proc_dir_entry *example_dir, *foo_file,
-*bar_file, *jiffies_file, *tty_device, *symlink;
+static struct proc_dir_entry *example_dir, *foo_file, *bar_file, *jiffies_file, *tty_device, *symlink;
 struct fb_data_t foo_data, bar_data;
-static int proc_read_jiffies(char *page, char **start,
-off_t off, int count,
-int *eof, void *data)
+static int proc_read_jiffies(char *page, char **start,off_t off, int count,int *eof, void *data)
 {
 int len;
 MOD_INC_USE_COUNT;
